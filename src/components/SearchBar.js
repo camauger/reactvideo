@@ -10,7 +10,8 @@ class SearchBar extends React.Component {
     // prevent page refresh by the browser
     event.preventDefault();
     // todo: make sure we call callback from parent component
-  }
+    this.props.onFormSubmit(this.state.term);
+  };
   render() {
     return (
       <div className="search-bar ui segment">

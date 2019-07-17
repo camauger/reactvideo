@@ -12,7 +12,7 @@ const VideoList = ({ videos, onVideoSelect }) => {
     );
   });
 
-  return <div className="ui list">{renderedList}</div>;
+  return <div className="col-sm-12 col-md-4">{renderedList}</div>;
 };
 
 export default VideoList;

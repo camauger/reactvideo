@@ -1,0 +1,13 @@
+header {
+    padding-top: 2rem;
+    text-align: center;
+}
+
+.video-detail {
+    max-height: 500px;
+
+}
+
+.card {
+    margin-bottom: 1rem;
+}

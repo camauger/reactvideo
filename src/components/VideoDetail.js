@@ -8,13 +8,21 @@ const VideoDetail = ({ video }) => {
   const videoSrc = `https://www.youtube.com/embed/${video.id.videoId}`;
 
   return (
-    <div>
-      <div className="ui embed">
-        <iframe src={videoSrc} title={video.snippet.title}/>
+    <div className="col-sm-12 col-md-8">
+    <div className="video-detail card">
+      <div className="embed-responsive embed-responsive-4by3">
+        <iframe
+          className="embed-responsive-item"
+          src={videoSrc}
+          title={video.snippet.title}
+        />
       </div>
-      <div className="ui segment">{video.snippet.title}</div>
-      <p>{video.snippet.description}</p>
-    </div>
+
+      <div className="card-body">
+        <h5 className="card-title"> {video.snippet.title}</h5>
+        <p className="card-text">{video.snippet.description}</p>
+      </div>
+    </div></div>
   );
 };
 

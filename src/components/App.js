@@ -1,10 +1,15 @@
 import React from "react";
+import "../videostyle.css";
 import SearchBar from "./SearchBar";
 import youtube from "../apis/youtube";
 import VideoList from "./VideoList";
 import VideoDetail from "./VideoDetail";
 class App extends React.Component {
   state = { videos: [], selectedVideo: null };
+
+  componentDidMount() {
+    this.onTermSubmit("buildings");
+  }
   onTermSubmit = async term => {
     const response = await youtube.get("/search", {
       params: {
@@ -12,7 +17,10 @@ class App extends React.Component {
       }
     });
 
-    this.setState({ videos: response.data.items });
+    this.setState({
+      videos: response.data.items,
+      selectedVideo: response.data.items[0]
+    });
   };
 
   onVideoSelect = video => {
@@ -20,16 +28,15 @@ class App extends React.Component {
   };
   render() {
     return (
-      <div className="ui container">
+      <div className="container">
         <SearchBar onFormSubmit={this.onTermSubmit} />
-        <div className="ui grid">
+
         <div className="row">
-        <VideoDetail video={this.state.selectedVideo} />
-        <VideoList
-          onVideoSelect={this.onVideoSelect}
-          videos={this.state.videos}
-        />
-        </div>
+          <VideoDetail video={this.state.selectedVideo} />
+          <VideoList
+            onVideoSelect={this.onVideoSelect}
+            videos={this.state.videos}
+          />
         </div>
       </div>
     );
